@@ -1,0 +1,109 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      body {
+        background-color: #aaaaff;
+      }
+      h6 {
+        color: #aaaa00;
+      }
+      #out {
+        color: red;
+      }
+      #verb {
+        color: green;
+      }
+    </style>
+  </head>
+  <body>
+    <h1 id="verb">Verb:</h1>
+    <form>
+      <input type="button" value="Check" id="check" />
+      <input type="button" value="Show answer" id="answer" />
+      <input type="button" value="Next" id="next" /><br /><br />
+      <input type="text" id="verb1" name="verb1" />
+      <input type="text" id="verb2" name="verb2" />
+      <input type="text" id="verb3" name="verb3" />
+    </form>
+    <h1 id="out">Learn three forms of verbs!</h1>
+    <h1 id="score">Score: 0</h1>
+    <h6>Miron Samokhvalov 2023 School Samson</h6>
+    <script type="text/javascript">
+      const verbs = [
+        ["be", "was", "been", "быть"],
+        ["become", "became", "become", "становиться"],
+        ["begin", "began", "begun", "начинать"],
+        ["bite", "bit", "bitten", "кусать"],
+        ["blow", "blew", "blown", "дуть"],
+        ["break", "broke", "broken", "ломать"],
+        ["choose", "chose", "chosen", "выбирать"],
+        ["come", "came", "come", "приходить"],
+        ["do", "did", "done", "делать"],
+        ["draw", "drew", "drawn", "рисовать"],
+        ["drink", "drank", "drunk", "пить"],
+        ["eat", "ate", "eaten", "есть"],
+       
+      ];
+      const txt0 = document.getElementById("verb");
+      const txt1 = document.getElementById("verb1");
+      const txt2 = document.getElementById("verb2");
+      const txt3 = document.getElementById("verb3");
+      const txt4 = document.getElementById("out");
+      const btn1 = document.getElementById("check");
+      const btn2 = document.getElementById("answer");
+      const btn3 = document.getElementById("next");
+      var checked = false;
+      var verb = verbs[Math.floor(Math.random() * verbs.length)];
+      if (typeof String.prototype.trim === "undefined") {
+        String.prototype.trim = function () {
+          return String(this).replace(/^\s+|\s+$/g, "");
+        };
+      }
+      var score = 0;
+      txt0.innerText = "Verb: " + verb[3];
+      btn1.addEventListener("click", () => {
+        if (checked) return;
+        a1 = txt1.value;
+        a2 = txt2.value;
+        a3 = txt3.value;
+        if (
+          a1.trim() == verb[0] &&
+          a2.trim() == verb[1] &&
+          a3.trim() == verb[2]
+        ) {
+          txt4.innerText = "Correct!";
+          score++;
+          document.getElementById("score").innerText = "Score: " + score;
+          checked = true;
+        } else {
+          txt4.innerText = "Wrong!";
+          if (a1.trim() != verb[0]) txt1.value = "";
+          if (a2.trim() != verb[1]) txt2.value = "";
+          if (a3.trim() != verb[2]) txt3.value = "";
+        }
+      });
+      btn2.addEventListener("click", () => {
+        if (checked) return;
+        score--;
+        txt1.value = verb[0];
+        txt2.value = verb[1];
+        txt3.value = verb[2];
+        document.getElementById("score").innerText = "Score: " + score;
+        checked = true;
+      });
+      btn3.addEventListener("click", () => {
+        a1 = txt1.value;
+        a2 = txt2.value;
+        a3 = txt3.value;
+        txt4.innerText = "Learn three forms of verbs!";
+        verb = verbs[Math.floor(Math.random() * verbs.length)];
+        txt3.value = "";
+        txt2.value = "";
+        txt1.value = "";
+        txt0.innerText = "Verb: " + verb[3];
+        checked = false;
+      });
+    </script>
+  </body>
+</html>
