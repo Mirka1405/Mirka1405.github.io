@@ -30,14 +30,113 @@
     <h1 id="score">Score: 0</h1>
 	  <label for="verbtypes" id="dropdown">Выберите набор глаголов</label>
 	  <select name="verbtypes" id="verbtypes">
-			<option value="main" selected>Полный список (95 глаголов)</option>
-			<option value="blockall" selected>Из учебника (54 глагола)</option>
-			<option value="block1" selected>С изменением гласной (24 глагола)</option>
-			<option value="block2" selected>Другие изменения (25 глаголов)</option>
-			<option value="block3" selected>Не меняющиеся (5 глаголов)</option>
+			<option value="main" selected="selected">Полный список (96 глаголов)</option>
+			<option value="blockall">Из учебника (54 глагола)</option>
+			<option value="block1">С изменением гласной (24 глагола)</option>
+			<option value="block2">Другие изменения (25 глаголов)</option>
+			<option value="block3">Не меняющиеся (5 глаголов)</option>
 	  </select>
+		<input type="button" value="Изменить набор" id="change" />
 	  <h6>Miron Samokhvalov 2023 School Samson</h6>
     <script type="text/javascript">
+			const main = [
+        ["be", "was", "been", "быть"],
+        ["beat", "beat", "beaten", "бить"],
+        ["become", "became", "become", "становиться"],
+        ["begin", "began", "begun", "начинать"],
+        ["bend", "bent", "bent", "гнуть"],
+        ["bite", "bit", "bitten", "кусать"],
+        ["blow", "blew", "blown", "дуть"],
+        ["break", "broke", "broken", "ломать"],
+        ["bring", "brought", "brought", "приносить"],
+        ["build", "built", "built", "строить"],
+        ["buy", "bought", "bought", "покупать"],
+        ["catch", "caught", "caught", "ловить"],
+        ["choose", "chose", "chosen", "выбирать"],
+        ["come", "came", "come", "приходить"],
+        ["cost", "cost", "cost", "стоить"],
+        ["cut", "cut", "cut", "резать"],
+        ["dig", "dug", "dug", "копать"],
+        ["do", "did", "done", "делать"],
+        ["draw", "drew", "drawn", "рисовать"],
+        ["drink", "drank", "drunk", "пить"],
+        ["drive", "drove", "driven", "ездить"],
+        ["eat", "ate", "eaten", "есть"],
+        ["fall", "fell", "fallen", "падать"],
+        ["feed", "fed", "fed", "кормить"],
+        ["feel", "felt", "felt", "чувствовать"],
+        ["fight", "fought", "fought", "драться"],
+        ["find", "found", "found", "находить"],
+        ["fly", "flew", "flown", "летать"],
+        ["forget", "forgot", "forgotten", "забывать"],
+        ["forgive", "forgave", "forgiven", "прощать"],
+        ["freeze", "froze", "frozen", "замерзать"],
+        ["get", "got", "got", "получать"],
+        ["give", "gave", "given", "дать"],
+        ["go", "went", "gone", "идти"],
+        ["grow", "grew", "grown", "расти"],
+        ["hang", "hung", "hung", "вешать"],
+        ["have", "had", "had", "иметь"],
+        ["hear", "heard", "heard", "слышать"],
+        ["hide", "hid", "hidden", "прятать"],
+        ["hit", "hit", "hit", "ударять"],
+        ["hold", "held", "held", "держать"],
+        ["hurt", "hurt", "hurt", "ранить"],
+        ["keep", "kept", "kept", "хранить"],
+        ["know", "knew", "known", "знать"],
+        ["lay", "laid", "laid", "класть"],
+        ["lead", "led", "led", "вести"],
+        ["leave", "left", "left", "покидать"],
+        ["lend", "lent", "lent", "одалживать"],
+        ["let", "let", "let", "позволять"],
+        ["light", "lit", "lit", "зажигать"],
+        ["lose", "lost", "lost", "терять"],
+        ["make", "made", "made", "делать"],
+        ["mean", "meant", "meant", "значить"],
+        ["meet", "met", "met", "встречать"],
+        ["pay", "paid", "paid", "платить"],
+        ["put", "put", "put", "ставить"],
+        ["read", "read", "read", "читать"],
+        ["ride", "rode", "ridden", "ехать"],
+        ["ring", "rang", "rung", "звенеть"],
+        ["rise", "rose", "risen", "восходить"],
+        ["run", "ran", "run", "бежать"],
+        ["say", "said", "said", "говорить"],
+        ["see", "saw", "seen", "видеть"],
+        ["seek", "sought", "sought", "искать"],
+        ["sell", "sold", "sold", "продавать"],
+        ["send", "sent", "sent", "посылать"],
+        ["set", "set", "set", "устанавливать"],
+        ["shake", "shook", "shaken", "трясти"],
+        ["shine", "shone", "shone", "светить"],
+        ["shoot", "shot", "shot", "стрелять"],
+        ["show", "showed", "shown", "показывать"],
+        ["shut", "shut", "shut", "закрывать"],
+        ["sing", "sang", "sung", "петь"],
+        ["sink", "sank", "sunk", "тонуть"],
+        ["sit", "sat", "sat", "сидеть"],
+        ["sleep", "slept", "slept", "спать"],
+        ["speak", "spoke", "spoken", "говорить"],
+        ["spend", "spent", "spent", "тратить"],
+        ["stand", "stood", "stood", "стоять"],
+        ["steal", "stole", "stolen", "воровать"],
+        ["stick", "stuck", "stuck", "втыкать"],
+        ["swear", "swore", "sworn", "клясться"],
+        ["sweep", "swept", "swept", "мести"],
+        ["swim", "swam", "swum", "плавать"],
+        ["swing", "swung", "swung", "качаться"],
+        ["take", "took", "taken", "брать"],
+        ["teach", "taught", "taught", "учить"],
+        ["tear", "tore", "torn", "рвать"],
+        ["tell", "told", "told", "рассказывать"],
+        ["think", "thought", "thought", "думать"],
+        ["throw", "threw", "thrown", "бросать"],
+        ["understand", "understood", "understood", "понимать"],
+        ["wake", "woke", "woken", "просыпаться"],
+        ["wear", "wore", "worn", "носить"],
+        ["win", "won", "won", "выиграть"],
+        ["write", "wrote", "written", "писать"]
+      ];
       var verbs = [
         ["be", "was", "been", "быть"],
         ["beat", "beat", "beaten", "бить"],
@@ -134,8 +233,138 @@
         ["wake", "woke", "woken", "просыпаться"],
         ["wear", "wore", "worn", "носить"],
         ["win", "won", "won", "выиграть"],
-        ["write", "wrote", "written", "писать"],
+        ["write", "wrote", "written", "писать"]
       ];
+	    const block1 = [
+        ["become", "became", "become", "становиться"],
+        ["begin", "began", "begun", "начинать"],
+        ["blow", "blew", "blown", "дуть"],
+        ["break", "broke", "broken", "ломать"],
+        ["choose", "chose", "chosen", "выбирать"],
+        ["come", "came", "come", "приходить"],
+        ["draw", "drew", "drawn", "рисовать"],
+        ["drink", "drank", "drunk", "пить"],
+        ["eat", "ate", "eaten", "есть"],
+        ["fall", "fell", "fallen", "падать"],
+        ["find", "found", "found", "находить"],
+        ["get", "got", "got", "получать"],
+        ["give", "gave", "given", "дать"],
+        ["grow", "grew", "grown", "расти"],
+        ["know", "knew", "known", "знать"],
+        ["meet", "met", "met", "встречать"],
+        ["read", "read", "read", "читать"],
+        ["run", "ran", "run", "бежать"],
+        ["sing", "sang", "sung", "петь"],
+        ["sink", "sank", "sunk", "тонуть"],
+        ["sit", "sat", "sat", "сидеть"],
+        ["speak", "spoke", "spoken", "говорить"],
+        ["wake", "woke", "woken", "просыпаться"],
+        ["wear", "wore", "worn", "носить"],
+        ["win", "won", "won", "выиграть"],
+        ["write", "wrote", "written", "писать"]
+      ];
+			const block2 = [
+        ["bring", "brought", "brought", "приносить"],
+        ["build", "built", "built", "строить"],
+        ["buy", "bought", "bought", "покупать"],
+        ["catch", "caught", "caught", "ловить"],
+        ["do", "did", "done", "делать"],
+        ["draw", "drew", "drawn", "рисовать"],
+        ["drink", "drank", "drunk", "пить"],
+        ["drive", "drove", "driven", "ездить"],
+        ["eat", "ate", "eaten", "есть"],
+        ["fall", "fell", "fallen", "падать"],
+        ["feed", "fed", "fed", "кормить"],
+        ["feel", "felt", "felt", "чувствовать"],
+        ["fight", "fought", "fought", "драться"],
+        ["go", "went", "gone", "идти"],
+        ["have", "had", "had", "иметь"],
+        ["keep", "kept", "kept", "хранить"],
+        ["leave", "left", "left", "покидать"],
+        ["lose", "lost", "lost", "терять"],
+        ["make", "made", "made", "делать"],
+        ["pay", "paid", "paid", "платить"],
+        ["say", "said", "said", "говорить"],
+        ["see", "saw", "seen", "видеть"],
+        ["send", "sent", "sent", "посылать"],
+        ["spend", "spent", "spent", "тратить"],
+        ["stand", "stood", "stood", "стоять"],
+        ["take", "took", "taken", "брать"],
+        ["teach", "taught", "taught", "учить"],
+        ["tell", "told", "told", "рассказывать"],
+        ["think", "thought", "thought", "думать"],
+        ["understand", "understood", "understood", "понимать"]
+      ];
+			const block3 = [
+				["beat","beat","beaten","бить"],
+				["cut","cut","cut","резать"],
+				["hit","hit","hit","ударить"],
+				["let","let","let","позволять"],
+				["put","put","put","класть"]
+			];
+			const book = [
+				["beat","beat","beaten","бить"],
+				["cut","cut","cut","резать"],
+				["hit","hit","hit","ударить"],
+				["let","let","let","позволять"],
+				["put","put","put","класть"],        
+				["bring", "brought", "brought", "приносить"],
+        ["build", "built", "built", "строить"],
+        ["buy", "bought", "bought", "покупать"],
+        ["catch", "caught", "caught", "ловить"],
+        ["do", "did", "done", "делать"],
+        ["draw", "drew", "drawn", "рисовать"],
+        ["drink", "drank", "drunk", "пить"],
+        ["drive", "drove", "driven", "ездить"],
+        ["eat", "ate", "eaten", "есть"],
+        ["fall", "fell", "fallen", "падать"],
+        ["feed", "fed", "fed", "кормить"],
+        ["feel", "felt", "felt", "чувствовать"],
+        ["fight", "fought", "fought", "драться"],
+        ["go", "went", "gone", "идти"],
+        ["have", "had", "had", "иметь"],
+        ["keep", "kept", "kept", "хранить"],
+        ["leave", "left", "left", "покидать"],
+        ["lose", "lost", "lost", "терять"],
+        ["make", "made", "made", "делать"],
+        ["pay", "paid", "paid", "платить"],
+        ["say", "said", "said", "говорить"],
+        ["see", "saw", "seen", "видеть"],
+        ["send", "sent", "sent", "посылать"],
+        ["spend", "spent", "spent", "тратить"],
+        ["stand", "stood", "stood", "стоять"],
+        ["take", "took", "taken", "брать"],
+        ["teach", "taught", "taught", "учить"],
+        ["tell", "told", "told", "рассказывать"],
+        ["think", "thought", "thought", "думать"],
+        ["understand", "understood", "understood", "понимать"],        
+				["become", "became", "become", "становиться"],
+        ["begin", "began", "begun", "начинать"],
+        ["blow", "blew", "blown", "дуть"],
+        ["break", "broke", "broken", "ломать"],
+        ["choose", "chose", "chosen", "выбирать"],
+        ["come", "came", "come", "приходить"],
+        ["draw", "drew", "drawn", "рисовать"],
+        ["drink", "drank", "drunk", "пить"],
+        ["eat", "ate", "eaten", "есть"],
+        ["fall", "fell", "fallen", "падать"],
+        ["find", "found", "found", "находить"],
+        ["get", "got", "got", "получать"],
+        ["give", "gave", "given", "дать"],
+        ["grow", "grew", "grown", "расти"],
+        ["know", "knew", "known", "знать"],
+        ["meet", "met", "met", "встречать"],
+        ["read", "read", "read", "читать"],
+        ["run", "ran", "run", "бежать"],
+        ["sing", "sang", "sung", "петь"],
+        ["sink", "sank", "sunk", "тонуть"],
+        ["sit", "sat", "sat", "сидеть"],
+        ["speak", "spoke", "spoken", "говорить"],
+        ["wake", "woke", "woken", "просыпаться"],
+        ["wear", "wore", "worn", "носить"],
+        ["win", "won", "won", "выиграть"],
+        ["write", "wrote", "written", "писать"]
+			];
       const txt0 = document.getElementById("verb");
       const txt1 = document.getElementById("verb1");
       const txt2 = document.getElementById("verb2");
@@ -144,7 +373,9 @@
       const btn1 = document.getElementById("check");
       const btn2 = document.getElementById("answer");
       const btn3 = document.getElementById("next");
+			const btn4 = document.getElementById("change");
       var checked = false;
+			var value = "main";
       var verb = verbs[Math.floor(Math.random() * verbs.length)];
       if (typeof String.prototype.trim === "undefined") {
         String.prototype.trim = function () {
@@ -184,10 +415,30 @@
         checked = true;
       });
       btn3.addEventListener("click", () => {
-        a1 = txt1.value;
-        a2 = txt2.value;
-        a3 = txt3.value;
         txt4.innerText = "Learn three forms of the verbs!";
+        verb = verbs[Math.floor(Math.random() * verbs.length)];
+        txt3.value = "";
+        txt2.value = "";
+        txt1.value = "";
+        txt0.innerText = "Verb: " + verb[3];
+        checked = false;
+      });
+			btn4.addEventListener("click", () => {
+				var e = document.getElementById("verbtypes");
+				value = e.value;
+				switch(value){
+					case "main":
+						verbs = main;break;
+					case "blockall":
+						verbs = book;break;
+					case "block1":
+						verbs = block1;break;
+					case "block2":
+						verbs = block2;break;
+					case "block3":
+						verbs = block3;break;
+				}
+				txt4.innerText = "Learn three forms of the verbs!";
         verb = verbs[Math.floor(Math.random() * verbs.length)];
         txt3.value = "";
         txt2.value = "";
