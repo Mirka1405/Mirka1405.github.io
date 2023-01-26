@@ -37,6 +37,13 @@
 			<option value="block3">Не меняющиеся (5 глаголов)</option>
 	  </select>
 		<input type="button" value="Изменить набор" id="change" />
+		<br>
+		<label for="forms" id="dropdown">Количество форм глаголов</label>
+	  <select name="verbtypes" id="verbtypes">
+			<option value="full" selected="selected">Три формы (Infinitive, Past Simple, Past Participle)</option>
+			<option value="beginner">Две формы (Infinitive, Past Simple)</option>
+	  </select>
+		<input type="button" value="Изменить" id="change2" />
 	  <h6>Made by Miron Samokhvalov, 2023, at School Samson</h6>
     <script type="text/javascript">
 			const main = [
@@ -374,7 +381,9 @@
       const btn2 = document.getElementById("answer");
       const btn3 = document.getElementById("next");
 			const btn4 = document.getElementById("change");
+			const btn5 = document.getElementById("change2");
       var checked = false;
+			var isBeginnerLevel = false;
 			var value = "main";
       var verb = verbs[Math.floor(Math.random() * verbs.length)];
       if (typeof String.prototype.trim === "undefined") {
@@ -437,6 +446,15 @@
 						verbs = block2;break;
 					case "block3":
 						verbs = block3;break;
+				}
+				btn5.addEventListener("click", () => {
+				var e = document.getElementById("forms");
+				value = e.value;
+				switch(value){
+					case "full":
+						isBeginnerLevel = false;txt3.style.visibility='visible';break;
+					case "beginner":
+						isBeginnerLevel = true;txt3.style.visibility='hidden';break;
 				}
 				txt4.innerText = "Learn three forms of the verbs!";
         verb = verbs[Math.floor(Math.random() * verbs.length)];
