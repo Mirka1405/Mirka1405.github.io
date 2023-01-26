@@ -392,7 +392,7 @@
         if (
           a1.trim() == verb[0] &&
           a2.trim() == verb[1] &&
-          a3.trim() == verb[2]
+          (a3.trim() == verb[2] || isBeginnerLevel)
         ) {
           txt4.innerText = "Correct!";
           score++;
