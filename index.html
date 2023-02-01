@@ -14,9 +14,13 @@
       #verb {
         color: green;
       }
+      #time {
+        display: none;
+      }
     </style>
   </head>
   <body>
+    <h1 id="time">Time:</h1>
     <h1 id="verb">Verb:</h1>
     <form>
       <input type="button" value="Check" id="check" />
@@ -47,7 +51,12 @@
       </option>
       <option value="beginner">Две формы (Infinitive, Past Simple)</option>
     </select>
-    <input type="button" value="Изменить" id="change2" />
+    <input type="button" value="Изменить" id="change2" /><br>
+    <form>
+      <input type="text" id="goalscore" name="goalscore" />
+      <input type="button" value="Задать цель" id="goal" />
+      <input type="button" value="Остановить таймер" id="stop" />
+    </form>
     <h6>Made by Miron Samokhvalov, 2023, at School Samson</h6>
     <script type="text/javascript">
       const main = [
@@ -381,20 +390,34 @@
       const txt2 = document.getElementById("verb2");
       const txt3 = document.getElementById("verb3");
       const txt4 = document.getElementById("out");
+      const txt5 = document.getElementById("goalscore");
+      const txt6 = document.getElementById("time");
+      
       const btn1 = document.getElementById("check");
       const btn2 = document.getElementById("answer");
       const btn3 = document.getElementById("next");
       const btn4 = document.getElementById("change");
       const btn5 = document.getElementById("change2");
+      const btn6 = document.getElementById("goal");
+      const btn6 = document.getElementById("stop");
+      
+      var goal = 0;
+      var stopped = true;
       var checked = false;
       var isBeginnerLevel = false;
       var value = "main";
       var verb = verbs[Math.floor(Math.random() * verbs.length)];
+      
       if (typeof String.prototype.trim === "undefined") {
         String.prototype.trim = function () {
           return String(this).replace(/^\s+|\s+$/g, "");
         };
       }
+      
+      var timer = null;
+      var sec = 0;
+      var min = 0;
+      var ms = 0;
       var score = 0;
       txt0.innerText = "Verb: " + verb[3];
       btn1.addEventListener("click", () => {
@@ -479,6 +502,20 @@
         checked = false;
         score = 0;
         document.getElementById("score").innerText = "Score: 0";
+      });
+      function incrementTime() {
+        if(score==goal) {clearInterval(timer);alert("Congratulations! You scored ${goal} in ${min}:${sec},${ms}!")}
+        ms++;
+        if(ms==100) {sec++;if(sec==60)min++;}
+        txt6.innerText = "Time: ${min}:${sec},${ms}";
+      }
+      btn6.addEventListener("click",()=>{
+        txt6.style.display = "inline";
+        ms = 0;
+        sec = 0;
+        min = 0;
+        score = 0;
+        timer = setInterval(incrementTime,10);
       });
     </script>
   </body>
