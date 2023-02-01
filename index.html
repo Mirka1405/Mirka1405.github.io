@@ -16,6 +16,7 @@
       }
       #time {
         display: none;
+        color: red;
       }
     </style>
   </head>
@@ -504,10 +505,10 @@
         document.getElementById("score").innerText = "Score: 0";
       });
       function incrementTime() {
-        if(score==goal) {clearInterval(timer);alert("Congratulations! You scored ${goal} in ${min}:${sec},${ms}!")}
+        if(score==goal) {clearInterval(timer);alert(`Congratulations! You scored ${goal} in ${min}:${sec},${ms}!`)}
         ms++;
         if(ms==100) {sec++;if(sec==60)min++;}
-        txt6.innerText = "Time: ${min}:${sec},${ms}";
+        txt6.innerText = `Time: ${min}:${sec},${ms}`;
       }
       btn6.addEventListener("click",()=>{
         txt6.style.display = "inline";
