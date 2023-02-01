@@ -516,6 +516,7 @@
         sec = 0;
         min = 0;
         score = 0;
+        goal = Math.round(txt5.value);
         timer = setInterval(incrementTime,10);
       });
       btn7.addEventListener("click",()=>{clearInterval(timer);});
