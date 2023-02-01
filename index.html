@@ -509,6 +509,7 @@
         ms++;
         while(ms>=100) {sec++;ms-=60;while(sec>=60){min++;sec-=60}}
         txt6.innerText = `Time: ${min}:${sec},${ms}`;
+        timer = setTimeout(incrementTime,10);
       }
       btn6.addEventListener("click",()=>{
         txt6.style.display = "inline";
@@ -525,7 +526,7 @@
         checked = false;
         goal = Math.round(txt5.value);
         document.getElementById("score").innerText = "Score: 0";
-        timer = setInterval(incrementTime,100);
+        timer = setTimeout(incrementTime,10);
       });
       btn7.addEventListener("click",()=>{txt6.style.display = "none";});
     </script>
