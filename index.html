@@ -505,7 +505,7 @@
         document.getElementById("score").innerText = "Score: 0";
       });
       function incrementTime() {
-        if(score==goal) {clearInterval(timer);goal=0;alert(`Congratulations! You scored ${goal} in ${min}:${sec},${ms}!`)}
+        if(score==goal) {clearInterval(timer);goal=0;alert(`Congratulations! You scored ${score} in ${min}:${sec},${ms}!`)}
         ms++;
         while(ms>=100) {sec++;ms-=60;while(sec>=60){min++;sec-=60}}
         txt6.innerText = `Time: ${min}:${sec},${ms}`;
@@ -516,7 +516,15 @@
         sec = 0;
         min = 0;
         score = 0;
+        txt4.innerText = "Learn three forms of the verbs!";
+        verb = verbs[Math.floor(Math.random() * verbs.length)];
+        txt3.value = "";
+        txt2.value = "";
+        txt1.value = "";
+        txt0.innerText = "Verb: " + verb[3];
+        checked = false;
         goal = Math.round(txt5.value);
+        document.getElementById("score").innerText = "Score: 0";
         timer = setInterval(incrementTime,10);
       });
       btn7.addEventListener("click",()=>{clearInterval(timer);});
