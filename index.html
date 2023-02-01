@@ -505,9 +505,9 @@
         document.getElementById("score").innerText = "Score: 0";
       });
       function incrementTime() {
-        if(score==goal) {clearInterval(timer);alert(`Congratulations! You scored ${goal} in ${min}:${sec},${ms}!`)}
+        if(score==goal) {clearInterval(timer);goal=0;alert(`Congratulations! You scored ${goal} in ${min}:${sec},${ms}!`)}
         ms++;
-        if(ms==100) {sec++;if(sec==60)min++;}
+        while(ms>=100) {sec++;ms-=60;while(sec>=60){min++;sec-=60}}
         txt6.innerText = `Time: ${min}:${sec},${ms}`;
       }
       btn6.addEventListener("click",()=>{
