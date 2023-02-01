@@ -505,11 +505,10 @@
         document.getElementById("score").innerText = "Score: 0";
       });
       function incrementTime() {
-        if(score==goal) {txt6.style.display = "none";goal=0;alert(`Congratulations! You scored ${score} in ${min}:${sec},${ms}!`)}
+        if(score==goal) {txt6.style.display = "none";goal=0;alert(`Congratulations! You scored ${score} in ${min}:${sec},${ms}!`);clearInterval(timer)}
         ms++;
         while(ms>=100) {sec++;ms-=60;while(sec>=60){min++;sec-=60}}
         txt6.innerText = `Time: ${min}:${sec},${ms}`;
-        timer = setTimeout(incrementTime,20);
       }
       btn6.addEventListener("click",()=>{
         txt6.style.display = "inline";
@@ -526,9 +525,9 @@
         checked = false;
         goal = Math.round(txt5.value);
         document.getElementById("score").innerText = "Score: 0";
-        timer = setTimeout(incrementTime,20);
+        timer = setInterval(incrementTime,10);
       });
-      btn7.addEventListener("click",()=>{txt6.style.display = "none";});
+      btn7.addEventListener("click",()=>{txt6.style.display = "none";clearInterval(timer);});
     </script>
   </body>
 </html>
