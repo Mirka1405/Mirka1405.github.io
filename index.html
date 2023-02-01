@@ -507,7 +507,7 @@
       function incrementTime() {
         if(score==goal) {txt6.style.display = "none";goal=0;alert(`Congratulations! You scored ${score} in ${min}:${sec},${ms}!`);clearInterval(timer)}
         ms++;
-        while(ms>=100) {sec++;ms-=60;while(sec>=60){min++;sec-=60}}
+        while(ms>=100) {sec++;ms-=100;while(sec>=60){min++;sec-=60}}
         txt6.innerText = `Time: ${min}:${sec},${ms}`;
       }
       btn6.addEventListener("click",()=>{
