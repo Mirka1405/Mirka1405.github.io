@@ -399,7 +399,7 @@
       const btn4 = document.getElementById("change");
       const btn5 = document.getElementById("change2");
       const btn6 = document.getElementById("goal");
-      const btn6 = document.getElementById("stop");
+      const btn7 = document.getElementById("stop");
       
       var goal = 0;
       var stopped = true;
@@ -517,6 +517,7 @@
         score = 0;
         timer = setInterval(incrementTime,10);
       });
+      btn7.addEventListener("click",()=>{clearInterval(timer);});
     </script>
   </body>
 </html>
