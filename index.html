@@ -41,7 +41,7 @@
       <option value="blockall">Из учебника (54 глагола)</option>
       <option value="block1">С изменением гласной (24 глагола)</option>
       <option value="block2">Другие изменения (25 глаголов)</option>
-      <option value="block3">Не меняющиеся (5 глаголов)</option>
+      <option value="block3">Не меняющиеся (4 глагола)</option>
     </select>
     <input type="button" value="Изменить набор" id="change" />
     <br />
@@ -317,7 +317,6 @@
         ["understand", "understood", "understood", "понимать"],
       ];
       const block3 = [
-        ["beat", "beat", "beaten", "бить"],
         ["cut", "cut", "cut", "резать"],
         ["hit", "hit", "hit", "ударить"],
         ["let", "let", "let", "позволять"],
@@ -480,6 +479,15 @@
             verbs = block3;
             break;
         }
+        txt4.innerText = "Learn three forms of the verbs!";
+        verb = verbs[Math.floor(Math.random() * verbs.length)];
+        txt3.value = "";
+        txt2.value = "";
+        txt1.value = "";
+        txt0.innerText = "Verb: " + verb[3];
+        checked = false;
+        score = 0;
+        document.getElementById("score").innerText = "Score: 0";
       });
       btn5.addEventListener("click", () => {
         var e = document.getElementById("forms");
