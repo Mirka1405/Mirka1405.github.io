@@ -1,88 +1,88 @@
-<! DOCTYPE html>
-<.html>
-  <голова>
-    <стиль>
-      тело {
-        цвет фона: #aaaaff;
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      body {
+        background-color: #aaaaff;
       }
-      ч6 {
-        оттенок: #777700;
+      h6 {
+        color: #777700;
       }
-      #вне {
-        цвет: красный;
+      #out {
+        color: red;
       }
-      #глагол {
-        цвет: зеленый;
+      #verb {
+        color: green;
       }
-      #Время {
-        дисплей: нет;
-        цвет: красный;
+      #time {
+        display: none;
+        color: red;
       }
-    </стиль>
-  </голова>
-  <тело>
-    <h1 id="time">Время:</h1>
-    <h1 id="глагол">Verb:</h1>
-    <форма>
+    </style>
+  </head>
+  <body>
+    <h1 id="time">Time:</h1>
+    <h1 id="verb">Verb:</h1>
+    <form>
       <input type="button" value="Check" id="check" />
-      <input type="button" value="Показать ответ" id="answer" />
+      <input type="button" value="Show answer" id="answer" />
       <input type="button" value="Next" id="next" /><br /><br />
       <input type="text" id="verb1" name="verb1" />
       <input type="text" id="verb2" name="verb2" />
       <input type="text" id="verb3" name="verb3" />
-    </форма>
-    <h1 id="out">Изучите три формы глаголов! </ч1>
-    <h1 id="score">Оценка: 0</ч1>
+    </form>
+    <h1 id="out">Learn three forms of the verbs!</h1>
+    <h1 id="score">Score: 0</h1>
     <label for="verbtypes" id="dropdown">Выберите набор глаголов</label>
     <select name="verbtypes" id="verbtypes">
-      <значение параметра="main" selected="selected="selected">
+      <option value="main" selected="selected">
         Полный список (96 глаголов)
-      </выбор>
+      </option>
       <option value="blockall">Из учебника (54 глагола)</option>
       <option value="block1">С изменением гласной (24 глагола)</option>
       <option value="block2">Другие изменения (25 глаголов)</option>
       <option value="block3">Не меняющиеся (4 глагола)</option>
-    </выбирать>
+    </select>
     <input type="button" value="Изменить набор" id="change" />
-    <бр />
+    <br />
     <label for="verbtypes" id="dropdown2">Количество форм глаголов</label>
     <select name="verbtypes" id="forms">
-      <option value="full" selected="selected="selected">
- Три формы (Инфинитив, Прошлое Простое, Прошлое Причастие)
-      </выбор>
-      < option value="beginner">Две формы (Infinitive, Past Simple)</option>
-    </выбирать>
+      <option value="full" selected="selected">
+        Три формы (Infinitive, Past Simple, Past Participle)
+      </option>
+      <option value="beginner">Две формы (Infinitive, Past Simple)</option>
+    </select>
     <input type="button" value="Изменить" id="change2" /><br />
-    <форма>
-      <input type="text" id="goalscore" name="goalscore"" />
+    <form>
+      <input type="text" id="goalscore" name="goalscore" />
       <input type="button" value="Задать цель по счету" id="goal" />
       <input type="button" value="Остановить таймер" id="stop" />
-    </форма>
-    <h6>Макотека Мирона Самохвалова, 2023, в школе Самсон</h6>
-    < script type="text/javascript">
-      конст главная = [
+    </form>
+    <h6>Made by Miron Samokhvalov, 2023, at School Samson</h6>
+    <script type="text/javascript">
+      const main = [
         ["be", "was", "been", "быть"],
-        ["бить", "бить", "бить", "бить"],,
-        [«стать», «стать», «стать», «стать»],,
-        [«начать», «начать», «начать», «начать»],,
-        ["сгибать", "гнуть", "согнуть", "гнуть"],,
-        ["укусить", "укусить", "укусить"],
-        ["удар", "дуло", "сдуло", "дуть"],,
-        ["break", "broke", "broken", "ломать"],,
-        ["принести", "привезти", "привезти", "приносить"],
-        ["строить", "строить", "строить", "строить"],
-        ["купить", "купил", "купил", "купить"],,
-        [«поймать», «поймал», «поймал», «ловить»],
-        ["выбрать", "выбрал", "выбрал", "выбирать"],
-        ["пришел", "пришел", "пришел", "приходить"],,
-        ["стоимость", "стоимость", "стоимость", "стоить"],
-        ["резать", "резать", "резать", "резать"],
-        ["копать", "копать", "копать"],
+        ["beat", "beat", "beaten", "бить"],
+        ["become", "became", "become", "становиться"],
+        ["begin", "began", "begun", "начинать"],
+        ["bend", "bent", "bent", "гнуть"],
+        ["bite", "bit", "bitten", "кусать"],
+        ["blow", "blew", "blown", "дуть"],
+        ["break", "broke", "broken", "ломать"],
+        ["bring", "brought", "brought", "приносить"],
+        ["build", "built", "built", "строить"],
+        ["buy", "bought", "bought", "покупать"],
+        ["catch", "caught", "caught", "ловить"],
+        ["choose", "chose", "chosen", "выбирать"],
+        ["come", "came", "come", "приходить"],
+        ["cost", "cost", "cost", "стоить"],
+        ["cut", "cut", "cut", "резать"],
+        ["dig", "dug", "dug", "копать"],
         ["do", "did", "done", "делать (действие)"],
-        ["рисовать", "рисовать", "рисовать"],
-        [«пить», «пил», «пьян», «пить»],,
-        ["drive", "drive", "driven", "водить машину"],,
-        [«съесть», «съел», «съел», «есть»],
+        ["draw", "drew", "drawn", "рисовать"],
+        ["drink", "drank", "drunk", "пить"],
+        ["drive", "drove", "driven", "водить машину"],
+        ["eat", "ate", "eaten", "есть"],
         ["fall", "fell", "fallen", "падать"],
         ["feed", "fed", "fed", "кормить"],
         ["feel", "felt", "felt", "чувствовать"],
@@ -500,57 +500,57 @@
           case "beginner":
             isBeginnerLevel = true;
             txt3.style.visibility = "hidden";
-            ломать;
+            break;
         }
-        txt4. innerText = "Выучите три формы глаголов!";
-        глагол = глаголы[Математика. этаж(Мат. random() * глаголы. длина)];
-        txt3. ценность = "";
-        txt2. ценность = "";
-        txt1. ценность = "";
-        txt0. innerText = "Глагол: " + глагол[3];
-        проверено = false;
-        оценка = 0;
-        документ. getElementById("score"). innerText = "Счет: 0";
+        txt4.innerText = "Learn three forms of the verbs!";
+        verb = verbs[Math.floor(Math.random() * verbs.length)];
+        txt3.value = "";
+        txt2.value = "";
+        txt1.value = "";
+        txt0.innerText = "Verb: " + verb[3];
+        checked = false;
+        score = 0;
+        document.getElementById("score").innerText = "Score: 0";
       });
-      функция incrementTime() {
-        if (счет == гол) {
-          txt6. стиль. дисплей = "нет";
-          гол = 0;
-          alert('Поздравляем! Вы набрали ${score} в ${min}:${sec},${ms}!);
-          clearInterval(таймер);
+      function incrementTime() {
+        if (score == goal) {
+          txt6.style.display = "none";
+          goal = 0;
+          alert(`Congratulations! You scored ${score} in ${min}:${sec},${ms}!`);
+          clearInterval(timer);
         }
-        госпожа++;
-        в то время как (ms >= 100) {
-          сек++;
-          мс -= 100;
-          в то время как (сек >= 60) {
-            Мин++;
-            сек -= 60;
+        ms++;
+        while (ms >= 100) {
+          sec++;
+          ms -= 100;
+          while (sec >= 60) {
+            min++;
+            sec -= 60;
           }
         }
-        txt6. innerText = 'Время: ${min}:${sec},${ms}';
+        txt6.innerText = `Time: ${min}:${sec},${ms}`;
       }
-      бтн6. addEventListener("click", () => {
-        txt6. стиль. дисплей = "встроенный";
-        мс = 0;
-        сек = 0;
-        мин = 0;
-        оценка = 0;
-        txt4. innerText = "Выучите три формы глаголов!";
-        глагол = глаголы[Математика. этаж(Мат. random() * глаголы. длина)];
-        txt3. ценность = "";
-        txt2. ценность = "";
-        txt1. ценность = "";
-        txt0. innerText = "Глагол: " + глагол[3];
-        проверено = false;
-        цель = математика. круглый(txt5. ценность);
-        документ. getElementById("score"). innerText = "Счет: 0";
-        таймер = setInterval(incrementTime, 10);
+      btn6.addEventListener("click", () => {
+        txt6.style.display = "inline";
+        ms = 0;
+        sec = 0;
+        min = 0;
+        score = 0;
+        txt4.innerText = "Learn three forms of the verbs!";
+        verb = verbs[Math.floor(Math.random() * verbs.length)];
+        txt3.value = "";
+        txt2.value = "";
+        txt1.value = "";
+        txt0.innerText = "Verb: " + verb[3];
+        checked = false;
+        goal = Math.round(txt5.value);
+        document.getElementById("score").innerText = "Score: 0";
+        timer = setInterval(incrementTime, 10);
       });
-      бтн7. addEventListener("click", () => {
-        txt6. стиль. дисплей = "нет";
-        clearInterval(таймер);
+      btn7.addEventListener("click", () => {
+        txt6.style.display = "none";
+        clearInterval(timer);
       });
-    </сценарий>
-  </тело>
-</.html>
+    </script>
+  </body>
+</html>
