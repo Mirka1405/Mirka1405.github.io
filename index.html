@@ -413,12 +413,21 @@
           return String(this).replace(/^\s+|\s+$/g, "");
         };
       }
-
+      
+      'speechSynthesis' in window ? console.log("Web Speech API supported!") : console.log("Web Speech API is not supported")
+      const synth = window.speechSynthesis;
+      let toSpeech = new SpeechSynthesisUtterance("");
       var timer = null;
       var sec = 0;
       var min = 0;
       var ms = 0;
       var score = 0;
+      
+      function say(text) {
+        let toSpeech = new SpeechSynthesisUtterance(text);
+        synth.speak(toSpeech);
+      }
+      
       txt0.innerText = "Verb: " + verb[3];
       btn1.addEventListener("click", () => {
         if (checked) return;
@@ -434,6 +443,7 @@
           score++;
           document.getElementById("score").innerText = "Score: " + score;
           checked = true;
+          say(verb[0] + " " + verb[1] + " " + verb[2]);
         } else {
           txt4.innerText = "Wrong!";
           if (a1.trim() != verb[0]) txt1.value = "";
@@ -447,6 +457,7 @@
         txt1.value = verb[0];
         txt2.value = verb[1];
         txt3.value = verb[2];
+        say(verb[0] + " " + verb[1] + " " + verb[2]);
         document.getElementById("score").innerText = "Score: " + score;
         checked = true;
       });
