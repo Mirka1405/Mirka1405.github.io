@@ -1,0 +1,13 @@
+<head><meta charset="utf-8"></head>
+<body>
+<select id="lang">
+  <option value="en">English</option>
+  <option value="ru">Русский</option>
+</select>
+<button onclick="redirect()">Start</button>
+<script>
+function redirect(){
+  window.location.assign(window.location.origin + `/physics.html?lang=${document.getElementById("lang").value}`);
+}
+</script>
+</body>
