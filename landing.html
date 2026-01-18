@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Encoded page</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+  </head>
+  <body class="bg-dark text-light">
+    <div class="position-absolute top-50 start-50 translate-middle">
+    <form>
+      <div class="mb-3">
+        Hello!<br><br>
+
+        This website is intended for view by only one person - so you need a code to come in.<br>
+        The encryption isn't particularly strong - it is only intended to keep someone from accidently stumbling here.<br>
+        <label for="code" class="form-label">Code</label>
+        <input type="text" class="form-control" id="code">
+      </div>
+      <div class="mb-3 form-check">
+        <input type="checkbox" class="form-check-input" id="check">
+        <label class="form-check-label" for="check">I solemnly swear that my name starts with an N and the alphabetic positions of the letters in the name sum up to 44.</label>
+      </div>
+      <button type="button" class="btn btn-primary" onclick="tryDecode()">Decode</button>
+    </form>
+    <script>
+const check = document.getElementById("check");
+const code = document.getElementById("code");
+async function tryDecode(){
+  if(!check.checked) {alert("You aren't ✨her✨, sorry."); return;}
+  const url = "html.encoded";
+  var r = new ArrayBuffer();
+  try {
+    const response = await fetch(url);
+    if (!response.ok) {
+      alert("Error fetching....")
+      throw new Error(`Response status: ${response.status}`);
+    }
+
+    r = await response.arrayBuffer();
+  } catch (error) {
+    alert(error.message);
+  }
+
+  const c = String(code.value);
+  const v = new Uint8Array(r);
+  for(let i=0;i<r.byteLength;i++){
+    v[i]-=c.charCodeAt(i%c.length);
+  }
+  
+  document.documentElement.innerHTML = arrayBufferToString(v);
+  console.log(arrayBufferToString(v))
+}
+function arrayBufferToString(buffer, encoding = 'utf-8') {
+  const decoder = new TextDecoder(encoding);
+  return decoder.decode(buffer);
+}
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+  </div>
+  </body>
+</html>
